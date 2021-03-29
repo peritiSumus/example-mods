@@ -902,6 +902,9 @@
         });
         const scale = daapi.calculateScaleByClassFactor();
 
+        if (character.flagIsBusy && character.flagIsAway)
+            return;
+
         const slavesOnSale = [];
         // every once in a while, a merchant with skilled slaves will appear
         if (Math.random() < 0.05) {
