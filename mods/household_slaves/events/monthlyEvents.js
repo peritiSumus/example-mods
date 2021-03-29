@@ -344,6 +344,14 @@
 
         let trait;
         const candidates = E.filterHouseCharacters(null, (c)=>{
+            if (c.isDead ||
+                c.flagIsBusy ||
+                c.flagIsAway || 
+                (!c.isMale && c.spouseId)
+            ) {
+                return null
+            }
+
             const treatableTraits = E.getTreatableTraits(c)
             return treatableTraits.length > 0 ? c : null;
         });
@@ -379,6 +387,14 @@
 
         let trait;
         const candidates = E.filterHouseCharacters(null, (c)=>{
+            if (c.isDead ||
+                c.flagIsBusy ||
+                c.flagIsAway || 
+                (!c.isMale && c.spouseId)
+            ) {
+                return null
+            }
+
             const treatableTraits = E.getEntertainableTraits(c)
             return treatableTraits.length > 0 ? c : null;
         });
@@ -673,6 +689,14 @@
                     // add trait
                     if (Math.random() < 0.3) {
                         const candidates = E.filterHouseCharacters(null, (c)=>{
+                            if (c.isDead ||
+                                c.flagIsBusy ||
+                                c.flagIsAway || 
+                                (!c.isMale && c.spouseId)
+                            ) {
+                                return null
+                            }
+                
                             return c.traits.includes('gregarious') ? null : c;
                         });
                         if (candidates.length && candidates.length > 0) {
@@ -736,6 +760,13 @@
                 const doctorOdds = [0.3, 0.4, 0.5, 0.5, 0.75, 0.75, 1, 1, 1, 1];
 
                 const candidates = E.filterHouseCharacters(null, (c)=>{
+                    if (c.isDead ||
+                        c.flagIsBusy ||
+                        c.flagIsAway || 
+                        (!c.isMale && c.spouseId)
+                    ) {
+                        return null
+                    }        
                     return c.traits.includes('fat') || c.traits.includes('morbidlyFat') ? c : null;
                 });
                 if (candidates.length && candidates.length > 0) {
